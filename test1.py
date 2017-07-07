@@ -58,7 +58,7 @@ print("2A")
 syndicated_request_ids= {}
 non_synd_requests =  df1.loc[df1.Request_Syndication_Status != 32, "Request_Status"] #request status
 synd_requests =  df1.loc[df1.Request_Syndication_Status == 32, "Request_Status"] #request status
-print("PAKSHET")
+
 print(non_synd_requests.value_counts()) #to eval
 print(synd_requests.value_counts()) #to eval
 
