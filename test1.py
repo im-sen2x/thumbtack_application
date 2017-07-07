@@ -9,7 +9,7 @@ df1.columns = df1.columns.str.replace(" ",  "_")
 
 #1 A & B
 uniqueIDs = df1.User_ID.unique()
-syndicated = (df1.Request_Syndication_Status == 32).sum()
+syndicated = (df1[df1.Request_Syndication_Status == 32].index.size)
 
 syndicated_uniques = 0
 for uniques in uniqueIDs:
@@ -19,9 +19,9 @@ for uniques in uniqueIDs:
 
 
 print("1A & B")
-print(df1.size)
+print(df1.index.size)
 print("syndicated requests: " + str(syndicated))
-print("non-syndicated requests: " + str(df1.size - syndicated))
+print("non-syndicated requests: " + str(df1.index.size - syndicated))
 print("syndicated unique users: " + str(syndicated_uniques))
 print("syndicated requests / user: " + str(syndicated_uniques / len(uniqueIDs)))
 
@@ -69,6 +69,8 @@ print(blocked_RCID.value_counts())
 
 print(blocked_RCID.value_counts().head()) #most non-syndicated RCID
 print(blocked_RCID.value_counts().tail()) #least non-syndicated RCID
+print(blocked_RCID.value_counts().tail().index.values)
+print(df1[df1.Request_Category_ID.isin([605, 593, 565, 553, 1291])]["Request_Title"].value_counts())
 
 #AUX
 print("AUX")
